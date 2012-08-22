@@ -5,3 +5,19 @@ div.box {
 .hero-unit h1 {
 	font-size: 40px;
 }
+
+.navbar-inner {
+	padding: 2px;
+	min-height: 20px;
+}
+
+.navbar .brand {
+	line-height: 0;
+}
+
+.chrome-ver {
+	padding-left: 2px;
+	margin: 0 0 0 -2px;
+	float: right;
+	display: block;
+}

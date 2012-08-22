@@ -74,10 +74,21 @@ var completed = 0;
     setTimeout(CheckCompatibility, 200);
   }
 
+  function ChromeVersion() {
+    //full version as string:
+    var chromeverstring = window.navigator.appVersion.match(/Chrome\/(.*?) /)[1];
+  
+    console.log("chrome version: " + chromeverstring);
+    console.log(window.navigator.appVersion);
+
+    document.querySelector('.chrome-ver').innerHTML = chromeverstring;
+  }
+
   if (window.addEventListener) {
     window.addEventListener('load', Load(), false);
     window.addEventListener('DOMContentLoaded', function() {
       document.querySelector('#run-octane').addEventListener('click', Run);
+      ChromeVersion();
     });
   } else {
     window.attachEvent('onload', Load());
