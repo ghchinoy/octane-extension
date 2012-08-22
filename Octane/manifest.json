@@ -1,0 +1,17 @@
+{
+	"name": "Octane",
+	"version": "1.0",
+	"manifest_version": 2,
+	"description": "Chrome extension to run the Octane JavaScript benchmark suite",
+	"browser_action": {
+		"default_icon": "octane_22.png",
+		"default_popup": "extension-popup.html",
+		"default_title": "Octane - JavaScript benchmark suite"
+	},
+	"icons": {
+		"16": "octane_22.png",
+		"48": "octane_48.png",
+		"128": "octane_128.png"
+	},
+	"content_security_policy": "script-src 'self'; object-src 'self';"
+}
