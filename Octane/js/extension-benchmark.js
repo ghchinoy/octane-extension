@@ -6,8 +6,8 @@ var octaneResults;
 function ShowBox(name) {
   var box = document.getElementById("Box-" + name);
   box.style.visibility = 'visible';
-  var bar = document.getElementById("progress-bar").style.width = ""
-      + ((++completed) / benchmarks) * 100 + "%";
+  var bar = document.getElementById("progress-bar").style.width = "" +
+      ((++completed) / benchmarks) * 100 + "%";
 }
 
 function AddResult(name, result) {
@@ -63,9 +63,9 @@ function Run() {
 
 function CheckCompatibility() {
   // If no Typed Arrays support, show warning label.
-  var hasTypedArrays = typeof Uint8Array != "undefined"
-      && typeof Float64Array != "undefined"
-      && typeof (new Uint8Array(0)).subarray != "undefined";
+  var hasTypedArrays = typeof Uint8Array != "undefined" &&
+      typeof Float64Array != "undefined" &&
+      typeof (new Uint8Array(0)).subarray != "undefined";
 
   if (!hasTypedArrays) {
     console.log("Typed Arrays not supported");
@@ -92,7 +92,7 @@ function ChromeVersion() {
 if (window.addEventListener) {
   window.addEventListener('load', Load(), false);
   window.addEventListener('DOMContentLoaded', function() {
-    document.querySelector('#run-octane').addEventListener('click', Run);
+    document.getElementById("run-octane").addEventListener('click', Run);
     ChromeVersion();
   });
 } else {
