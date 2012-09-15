@@ -82,11 +82,21 @@ function Load() {
 function ChromeVersion() {
   //full version as string:
   var chromeverstring = window.navigator.appVersion.match(/Chrome\/(.*?) /)[1];
+  var crosver;
 
   console.log("chrome version: " + chromeverstring);
+  try {
+    crosver = window.navigator.appVersion.match(/CrOS (.*?) (.*?)\)/)[2];
+    console.log("cros version: " + crosver);
+  } catch (e) {
+    // no crosver - no harm, no foul.
+  }
   console.log(window.navigator.appVersion);
 
   document.querySelector('.chrome-ver').innerHTML = chromeverstring;
+  if (crosver !== undefined) {
+    document.querySelector('.cros-ver').innerHTML = crosver;
+  }
 }
 
 if (window.addEventListener) {

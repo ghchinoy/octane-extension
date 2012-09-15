@@ -57,7 +57,7 @@ function BenchmarkResult(benchmark, time) {
 // mean computation.
 BenchmarkResult.prototype.valueOf = function() {
   return this.time;
-}
+};
 
 
 // Suites of benchmarks consist of a name and the set of benchmarks in
@@ -134,7 +134,7 @@ BenchmarkSuite.RunSuites = function(runner) {
     }
   }
   RunStep();
-}
+};
 
 
 // Counts the total number of registered benchmarks. Useful for
@@ -146,7 +146,7 @@ BenchmarkSuite.CountBenchmarks = function() {
     result += suites[i].benchmarks.length;
   }
   return result;
-}
+};
 
 
 // Computes the geometric mean of a set of numbers.
@@ -156,7 +156,7 @@ BenchmarkSuite.GeometricMean = function(numbers) {
     log += Math.log(numbers[i]);
   }
   return Math.pow(Math.E, log / numbers.length);
-}
+};
 
 
 // Converts a score value to a string with at least three significant
@@ -167,14 +167,14 @@ BenchmarkSuite.FormatScore = function(value) {
   } else {
     return value.toPrecision(3);
   }
-}
+};
 
 // Notifies the runner that we're done running a single benchmark in
 // the benchmark suite. This can be useful to report progress.
 BenchmarkSuite.prototype.NotifyStep = function(result) {
   this.results.push(result);
   if (this.runner.NotifyStep) this.runner.NotifyStep(result.benchmark.name);
-}
+};
 
 
 // Notifies the runner that we're done with running a suite and that
@@ -187,7 +187,7 @@ BenchmarkSuite.prototype.NotifyResult = function() {
     var formatted = BenchmarkSuite.FormatScore(100 * score);
     this.runner.NotifyResult(this.name, formatted);
   }
-}
+};
 
 
 // Notifies the runner that running a benchmark resulted in an error.
@@ -198,7 +198,7 @@ BenchmarkSuite.prototype.NotifyError = function(error) {
   if (this.runner.NotifyStep) {
     this.runner.NotifyStep(this.name);
   }
-}
+};
 
 
 // Runs a single benchmark for at least a second and computes the
@@ -211,13 +211,13 @@ BenchmarkSuite.prototype.RunSingleBenchmark = function(benchmark, data) {
       benchmark.run();
       elapsed = new Date() - start;
     }
-    if (data != null) {
+    if (data !== null) {
       data.runs += n;
       data.elapsed += elapsed;
     }
   }
 
-  if (data == null) {
+  if (data === null) {
     // Measure the benchmark once for warm up and throw the result
     // away. Return a fresh data object.
     Measure(null);
@@ -230,7 +230,7 @@ BenchmarkSuite.prototype.RunSingleBenchmark = function(benchmark, data) {
     this.NotifyStep(new BenchmarkResult(benchmark, usec));
     return null;
   }
-}
+};
 
 
 // This function starts running a suite, but stops between each
@@ -271,7 +271,7 @@ BenchmarkSuite.prototype.RunStep = function(runner) {
       return null;
     }
     // If data is null, we're done with this benchmark.
-    return (data == null) ? RunNextTearDown : RunNextBenchmark();
+    return (data === null) ? RunNextTearDown : RunNextBenchmark();
   }
 
   function RunNextTearDown() {
@@ -286,4 +286,4 @@ BenchmarkSuite.prototype.RunStep = function(runner) {
 
   // Start out running the setup.
   return RunNextSetup();
-}
+};
